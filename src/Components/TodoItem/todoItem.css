@@ -1,0 +1,65 @@
+.todoItem {
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    border: 4px solid #56070c;
+    border-radius: 20px;
+  }
+  
+  .todoItem-p {
+    margin: 12px 0 12px 12px;
+    width: calc(100% - 120px);
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .todoItem button{
+    font-size: 25px;
+    line-height: 24px;
+    border: none;
+    background-color: transparent;
+  }
+
+  .icon-delete:hover{
+    color: red;
+  }
+
+  .todoItem-p--complete {
+    text-decoration: line-through;
+  }
+  
+  .Icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+    font-weight: bold;
+    /* background-color: #CCC; */
+  }
+
+  .Icon-check--active {
+    color: #4caf50;
+  }
+  
+  .todoItem-complete{
+    background-color: #b5adad;
+    border: 4px solid #b5adad;
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+    .title_container{
+      line-height: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .title_container{
+      line-height: 24px;
+    }
+  }

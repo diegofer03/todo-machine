@@ -1,0 +1,37 @@
+.createbutton_container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.CreateTodoButton {
+    background-color: #56070c;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    line-height: 35px;
+    transition: .3s ease;
+  }
+  
+  .CreateTodoButton:hover {
+    transform: scale(1.2);
+  }
+
+  @media only screen and (max-width: 600px) {
+    .CreateTodoButton{
+      width: 50%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .CreateTodoButton{
+      width: 30%;
+    }
+  }

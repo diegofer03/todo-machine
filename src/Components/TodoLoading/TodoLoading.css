@@ -1,0 +1,9 @@
+.loading_container{
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.skeleton_loader{
+    width: 70%;
+}
