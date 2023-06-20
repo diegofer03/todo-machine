@@ -11,6 +11,7 @@ import { TodoEmpty } from '../Components/TodoEmpty';
 import { TodoContext } from '../Hooks/todoContext';
 import { Modal } from '../Components/Modal';
 import { TodoForm } from '../Components/TodoForm';
+import { UpdateAlerttWithStorageListener } from '../Hooks/updateAlert';
 
 function AppUI() {
     const {error,
@@ -22,6 +23,7 @@ function AppUI() {
       searchedTodos,
       completeTodo,
       deleteTodo,
+      sincronize,
       openModal, 
       setOpenModal} = useContext(TodoContext)
     return (
@@ -29,11 +31,12 @@ function AppUI() {
           <div className='App'>
             <TodoCounter completed={completedTaks} todo={todosList.length}/>
             <TodoSearch searchText={searchText} setSearchText={setSearchText} />
+            <UpdateAlerttWithStorageListener sincronize={sincronize}/>
             {loading && <><TodoLoading/> <TodoLoading/> <TodoLoading/></>}
             {error && <TodoErrors/>}
-            {(!loading && searchedTodos.length === 0) && < TodoEmpty type={'search'}/>}
+            {(!loading && searchedTodos.length === 0 && todosList.length !== 0) && < TodoEmpty type={'search'}/>}
             {(!loading && todosList.length === 0) && < TodoEmpty type={'load'}/>}
-            <TodoList>
+            {(!loading && !error) && <TodoList>
               {searchedTodos.map(todo => (
                 <TodoItem key={todo.text}
                 text={todo.text}
@@ -42,7 +45,8 @@ function AppUI() {
                 onDelete={()=>deleteTodo(todo.text)}
                 />
               ))}
-            </TodoList>
+            </TodoList> }
+            
             <CreateTodoButton setOpenModal={setOpenModal}/>
             {openModal && <Modal>
                 <TodoForm/>
