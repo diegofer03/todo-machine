@@ -1,0 +1,17 @@
+.update_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.update_container p{
+    width: 20%;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin-bottom: 0;
+    background-color: #b31c26;
+    color:white;
+    border-radius: 30px;
+}

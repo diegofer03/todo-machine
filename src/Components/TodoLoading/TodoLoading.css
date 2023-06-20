@@ -1,7 +1,7 @@
 .loading_container{
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin: 15px 0;
 }
 
 .skeleton_loader{

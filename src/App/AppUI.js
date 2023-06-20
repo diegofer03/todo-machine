@@ -31,11 +31,12 @@ function AppUI() {
           <div className='App'>
             <TodoCounter completed={completedTaks} todo={todosList.length}/>
             <TodoSearch searchText={searchText} setSearchText={setSearchText} />
+            <UpdateAlerttWithStorageListener sincronize={sincronize}/>
             {loading && <><TodoLoading/> <TodoLoading/> <TodoLoading/></>}
             {error && <TodoErrors/>}
             {(!loading && searchedTodos.length === 0 && todosList.length !== 0) && < TodoEmpty type={'search'}/>}
             {(!loading && todosList.length === 0) && < TodoEmpty type={'load'}/>}
-            <TodoList>
+            {(!loading && !error) && <TodoList>
               {searchedTodos.map(todo => (
                 <TodoItem key={todo.text}
                 text={todo.text}
@@ -44,9 +45,9 @@ function AppUI() {
                 onDelete={()=>deleteTodo(todo.text)}
                 />
               ))}
-            </TodoList>
+            </TodoList> }
+            
             <CreateTodoButton setOpenModal={setOpenModal}/>
-            < UpdateAlerttWithStorageListener sincronize={sincronize}/>
             {openModal && <Modal>
                 <TodoForm/>
               </Modal>}

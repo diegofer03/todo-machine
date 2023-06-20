@@ -1,17 +1,12 @@
 import React from 'react'
 import { withStorageListen } from './withStorageListen'
+import './updateAlert.css'
 
 function ChangeAlert({update, toggleUpdate}) {
-    console.log(update)
     if (update) {
         return (
-          <div>
-            <p>Hubo hubo cambios</p>
-            <button
-              onClick={toggleUpdate}
-            >
-              Volver a cargar la información
-            </button>
+          <div className='update_container'>
+            <p onClick={toggleUpdate}>Update tasks</p>
           </div>
         );
       } else {
