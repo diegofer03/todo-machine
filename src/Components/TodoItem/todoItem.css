@@ -22,6 +22,14 @@
     background-color: transparent;
   }
 
+  .icon-check:hover{
+    color: #4caf50;
+  }
+
+  .icon-edit:hover{
+    color: #1a7ad3;
+  }
+
   .icon-delete:hover{
     color: red;
   }

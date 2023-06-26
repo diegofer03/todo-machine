@@ -4,7 +4,7 @@ import { useLocalStorage } from '../useLocalStorage'
 const TodoContext = React.createContext()
 
 function TodoProvider ({children}){
-    const { item: todosList, saveItem: setTodosList, error, loading} = useLocalStorage('TODO_V1', [])
+    const { item: todosList, saveItem: setTodosList, error, loading} = useLocalStorage('TODO_V2', [])
     const [searchText, setSearchText] = useState('')
     const [openModal, setOpenModal] = useState(false)
 
@@ -16,9 +16,9 @@ function TodoProvider ({children}){
         return todoText.includes(searchValue)
     } )
 
-    const completeTodo = (text) => {
+    const completeTodo = (id) => {
         const auxTodos = [...todosList]
-        const textIndex = auxTodos.findIndex((todo) => todo.text === text)
+        const textIndex = auxTodos.findIndex((todo) => todo.id === id)
         auxTodos[textIndex].completed = !auxTodos[textIndex].completed
         setTodosList(auxTodos)
     }
@@ -27,15 +27,16 @@ function TodoProvider ({children}){
         const auxTodos = [...todosList]
         
         auxTodos.push({
+            id: todoId(),
             text: text,
             completed: false
         })
         setTodosList(auxTodos)
     }
 
-    const deleteTodo = (text) => {
+    const deleteTodo = (id) => {
         const auxTodos = [...todosList]
-        const textIndex = auxTodos.findIndex((todo) => todo.text === text)
+        const textIndex = auxTodos.findIndex((todo) => todo.id === id)
         auxTodos.splice(textIndex, 1)
         setTodosList(auxTodos)
     }
@@ -56,5 +57,7 @@ function TodoProvider ({children}){
         </TodoContext.Provider>
     )
 }
+
+const todoId = () => ( Date.now() )
 
 export {TodoProvider, TodoContext}
