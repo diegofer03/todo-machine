@@ -1,0 +1,99 @@
+.App {
+  height: 80%;
+  width: 50%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-container {
+  width: 90%;
+  max-width: 300px;
+  background-color: #fff;
+  padding: 33px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.delete-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #1E1E1F;
+}
+
+.delete-textarea {
+  background-color: #F9FBFC;
+  border: 2px solid #202329;
+  border-radius: 2px;
+  box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+  color: #1E1E1F;
+  font-size: 20px;
+  text-align: center;
+  padding: 12px;
+  height: 96px;
+  width: calc(100% - 25px);
+  font-family: 'Source Sans Pro';
+}
+
+.delete-buttonContainer {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.delete-button {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  color: #202329;
+  font-weight: 400;
+  width: 120px;
+  height: 48px;
+  border-radius: 2px;
+  border: none;
+}
+
+.delete {
+  background: #56070c;
+  border-radius: 5px;
+  color: white;
+}
+
+.cancel {
+  background: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    height: 90%;
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .App {
+    height: 90%;
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .App{
+    height: 90%;
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .App {
+    height: 80%;
+    width: 50%;
+  }
+}
