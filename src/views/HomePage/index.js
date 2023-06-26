@@ -60,7 +60,7 @@ function HomePage() {
             {openModal && <Modal>
               <div className='delete-container '>
                 <label className='delete-title'>Delete TODO</label>
-                <p className='delete-textarea'>{selectedTodo.text}xd</p>
+                <p className='delete-textarea'>{selectedTodo.text}</p>
                 <div className='delete-buttonContainer'>
                   <button className='delete-button' onClick={() => setOpenModal(state => !state)}>Cancel</button>
                   <button className='delete-button delete' onClick={()=>deleteTodo(selectedTodo.id)}>Delete</button>
