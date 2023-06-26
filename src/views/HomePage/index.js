@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import './App.css';
-import { TodoCounter } from '../Components/TodoCounter';
-import { TodoItem } from '../Components/TodoItem';
-import { TodoList } from '../Components/TodoList';
-import { TodoSearch } from '../Components/TodoSearch';
-import { CreateTodoButton } from '../Components/CreateTodoButton';
-import { TodoLoading } from '../Components/TodoLoading';
-import { TodoErrors } from '../Components/TodoErros';
-import { TodoEmpty } from '../Components/TodoEmpty';
-import { TodoContext } from '../Hooks/todoContext';
-import { Modal } from '../Components/Modal';
-import { TodoForm } from '../Components/TodoForm';
+import { TodoCounter } from '../../Components/TodoCounter';
+import { TodoItem } from '../../Components/TodoItem';
+import { TodoList } from '../../Components/TodoList';
+import { TodoSearch } from '../../Components/TodoSearch';
+import { CreateTodoButton } from '../../Components/CreateTodoButton';
+import { TodoLoading } from '../../Components/TodoLoading';
+import { TodoErrors } from '../../Components/TodoErros';
+import { TodoEmpty } from '../../Components/TodoEmpty';
+import { TodoContext } from '../../Hooks/todoContext';
+import { Modal } from '../../Components/Modal';
+import { TodoForm } from '../../Components/TodoForm';
 
-function AppUI() {
+function HomePage() {
     const {error,
       loading,
       searchText,
@@ -52,4 +52,4 @@ function AppUI() {
       );
 }
 
-export {AppUI}
+export {HomePage}
