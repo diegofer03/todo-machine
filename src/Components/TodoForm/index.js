@@ -1,19 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import './TodoForm.css'
-import { TodoContext } from '../../Hooks/todoContext'
+import { useNavigate } from 'react-router-dom'
 
-function TodoForm() {
-    const { setOpenModal, addTodo} = useContext(TodoContext)
-    const [text, setText] = useState('')
+function TodoForm(props) {
+    const [text, setText] = useState(props.textValue || '')
+    const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault()
-        addTodo(text)
-        setOpenModal(false)
+        props.submitEvent(text)
+        navigate('/')
     }
 
     const onCancel = () =>{
-        setOpenModal(false)
+        navigate('/')
     }
 
     const onChange = (e) => {
@@ -21,11 +21,11 @@ function TodoForm() {
     }
     return (
         <form onSubmit={onSubmit}>
-            <label>Create new Task</label>
+            <label>{props.todoText}</label>
             <textarea placeholder='create flux capacitor' value={text} onChange={onChange}/>
             <div className='TodoForm-buttonContainer'>
-                <button className='TodoForm-button cancel' type='button' onClick={onCancel}>Cancel</button>
-                <button className='TodoForm-button add' type='submit'>Create</button>
+                <button className='TodoForm-button' type='button' onClick={onCancel}>Cancel</button>
+                <button className='TodoForm-button add' type='submit'>{props.todoTextBtn}</button>
             </div>
         </form>
     )

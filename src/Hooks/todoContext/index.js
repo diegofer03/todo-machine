@@ -34,11 +34,25 @@ function TodoProvider ({children}){
         setTodosList(auxTodos)
     }
 
+    const editTodo = (id, text) => {
+        const auxTodos = [...todosList]
+        const textIndex = auxTodos.findIndex((todo) => todo.id === id)
+        auxTodos[textIndex].text = text
+        setTodosList(auxTodos)
+    }
+
+    const getText = (id) => {
+        const auxTodos = [...todosList]
+        const textIndex = auxTodos.findIndex((todo) => todo.id === id)
+        return auxTodos[textIndex]?.text || null
+    }
+
     const deleteTodo = (id) => {
         const auxTodos = [...todosList]
         const textIndex = auxTodos.findIndex((todo) => todo.id === id)
         auxTodos.splice(textIndex, 1)
         setTodosList(auxTodos)
+        setOpenModal(false)
     }
     return (
         <TodoContext.Provider value={{error,
@@ -51,7 +65,9 @@ function TodoProvider ({children}){
             completeTodo,
             deleteTodo,
             openModal,
-            addTodo, 
+            addTodo,
+            editTodo,
+            getText, 
             setOpenModal}}>
             {children}
         </TodoContext.Provider>

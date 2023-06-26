@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './App.css';
 import { TodoCounter } from '../../Components/TodoCounter';
 import { TodoItem } from '../../Components/TodoItem';
@@ -10,9 +10,10 @@ import { TodoErrors } from '../../Components/TodoErros';
 import { TodoEmpty } from '../../Components/TodoEmpty';
 import { TodoContext } from '../../Hooks/todoContext';
 import { Modal } from '../../Components/Modal';
-import { TodoForm } from '../../Components/TodoForm';
+import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
+  const navegate = useNavigate()
     const {error,
       loading,
       searchText,
@@ -24,6 +25,15 @@ function HomePage() {
       deleteTodo,
       openModal, 
       setOpenModal} = useContext(TodoContext)
+    const [selectedTodo, setSelectedTodo] = useState({
+      id: '',
+      text: ''
+    })
+
+    const openDelete = (todo) => {
+      setSelectedTodo({id: todo.id, text: todo.text})
+      setOpenModal(state => !state)
+    }
     return (
         <>
           <div className='App'>
@@ -35,17 +45,27 @@ function HomePage() {
             {(!loading && todosList.length === 0) && < TodoEmpty type={'load'}/>}
             <TodoList>
               {searchedTodos.map(todo => (
-                <TodoItem key={todo.text}
+                <TodoItem key={todo.id}
                 text={todo.text}
                 completed={todo.completed}
                 onComplete={ () => completeTodo(todo.id) }
-                onDelete={()=>deleteTodo(todo.id)}
+                onDelete={()=> openDelete(todo)}
+                onEdit={()=>navegate(`edit/${todo.id}`,{
+                  state: todo
+                })}
                 />
               ))}
             </TodoList>
-            <CreateTodoButton setOpenModal={setOpenModal}/>
+            <CreateTodoButton addTodo={() => navegate('/add')}/>
             {openModal && <Modal>
-                <TodoForm/>
+              <div className='delete-container '>
+                <label className='delete-title'>Delete TODO</label>
+                <p className='delete-textarea'>{selectedTodo.text}xd</p>
+                <div className='delete-buttonContainer'>
+                  <button className='delete-button' onClick={() => setOpenModal(state => !state)}>Cancel</button>
+                  <button className='delete-button delete' onClick={()=>deleteTodo(selectedTodo.id)}>Delete</button>
+                </div>
+              </div>
               </Modal>}
           </div>
         </>
