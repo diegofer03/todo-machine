@@ -4,7 +4,7 @@ import { useLocalStorage } from '../useLocalStorage'
 const TodoContext = React.createContext()
 
 function TodoProvider ({children}){
-    const { item: todosList, saveItem: setTodosList, error, loading} = useLocalStorage('TODO_V2', [])
+    const { item: todosList, saveItem: setTodosList, error, loading, sincronize} = useLocalStorage('TODO_V2', [])
     const [searchText, setSearchText] = useState('')
     const [openModal, setOpenModal] = useState(false)
 
@@ -65,9 +65,7 @@ function TodoProvider ({children}){
             completeTodo,
             deleteTodo,
             openModal,
-            addTodo,
-            editTodo,
-            getText, 
+            addTodo, 
             setOpenModal}}>
             {children}
         </TodoContext.Provider>
